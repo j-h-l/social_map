@@ -2,8 +2,9 @@ from __future__ import print_function
 import csv
 import os
 
-import json
-import requests
+# Todo: parse csv into database with sqlalchemy
+#       parser for twitter data
+#       parser for foursquare data
 
 
 class GowallaData(object):
