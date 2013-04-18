@@ -1,6 +1,9 @@
 # datasets - noted in DATAINFO.md where to obtain
 loc-gowalla_*
 userdata/
+data/
+
+# generated png
 *.png
 
 
