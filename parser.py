@@ -1,3 +1,8 @@
+"""
+Social data visualization
+
+Parses data into postresql database and/or separate txt files
+"""
 from __future__ import print_function
 import csv
 import os
@@ -11,8 +16,7 @@ from model.gowalla import GowallaUser, GowallaCheckin
 
 import settings
 
-# Todo: parse csv into database with sqlalchemy
-#       parser for twitter data
+# Todo: parser for twitter data
 #       parser for foursquare data
 
 

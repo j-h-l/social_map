@@ -1,3 +1,7 @@
+"""
+Google maps request
+Plots data on google map
+"""
 from __future__ import print_function
 import requests
 from PIL import Image
@@ -11,6 +15,7 @@ class GoogleMaps(object):
     """ Static map from Google Maps
 
         Todo: extend this to request interactive map in javascript
+              create overlay layer - request url is limited to 2048 char
     """
 
     def __init__(self, center="37.783,-122.399", zoom=16, imgsize="640x360",
