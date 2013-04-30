@@ -8,7 +8,7 @@ import social_controller
 class MainHandler(tornado.web.RequestHandler):
     """ Main """
     def get(self):
-        here = tornado.template.Loader(".")
+        here = tornado.template.Loader("./web/")
         self.write(here.load("index.html").generate())
 
 
@@ -16,7 +16,7 @@ class WeSoHandler(tornado.websocket.WebSocketHandler):
     """ Handler for websocket connection """
     def open(self):
         self.write_message("Nice to meet you!")
-        checkins = social_controller.Picker()
+        # checkins = social_controller.Picker()
 
 
     def on_close(self):
@@ -26,7 +26,7 @@ class WeSoHandler(tornado.websocket.WebSocketHandler):
 application = tornado.web.Application([
     (r"/websocket", WeSoHandler),
     (r"/", MainHandler),
-    (r"/src/(.*)", tornado.web.StaticFileHandler, {"path": "./src"}),
+    (r"/src/(.*)", tornado.web.StaticFileHandler, {"path": "./web/src"}),
                                        ])
 
 if __name__ == '__main__':
