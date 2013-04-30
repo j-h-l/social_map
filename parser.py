@@ -42,6 +42,7 @@ class GowallaData(object):
 
     def parse_to_septxt(self):
         """ Parse data into separate files according to userid
+            *Not recommended now that parse_to_database is implemented
         """
         mycsv = self.each_checkin()
         for event in mycsv:
@@ -97,10 +98,39 @@ class GowallaData(object):
 
         print("Done.")
 
+    def load_edges(self, edges):
+        """ Load friendship data
+            edges: path to friendship data
+        """
+        friends = open(edges)
+        friends_csv = csv.reader(friends, delimiter='\t')
+        for friendship in friends_csv:
+            yield friendship
+
+    def create_friendships(self, edges, settings):
+        """ Create friendships with set of given edges
+            // not tested yet //
+        """
+        engine = create_engine(URL(**settings.DATABASE))
+
+        friendships = self.load_edges(edges)
+        for friendship in friendships:
+            session = Session(bind=engine)
+            user = session.query(GowallaUser)\
+                    .filter(GowallaUser.id == friendship[0]).first()
+            if not friendship[1] in user.friendships_me:
+                edge = friendship(friend_me=friendship[0],
+                        friend_other=friendship[1])
+                try:
+                    session.add(edge)
+                except:
+                    pass
+                finally:
+                    session.commit()
+                    session.close()
 
 
-
-def letsrunthis(f):
+def parse_users_checkins(f):
     """ Run parser
     :f: checkin data from gowalla
     """
@@ -111,4 +141,4 @@ def letsrunthis(f):
 
 if __name__ == '__main__':
     f = "data/loc-gowalla_totalCheckins.txt"
-    letsrunthis(f)
+    parse_users_checkins(f)
