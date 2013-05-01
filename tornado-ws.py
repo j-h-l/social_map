@@ -1,3 +1,4 @@
+from __future__ import print_function
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
@@ -14,13 +15,21 @@ class MainHandler(tornado.web.RequestHandler):
 
 class WeSoHandler(tornado.websocket.WebSocketHandler):
     """ Handler for websocket connection """
+    def initialize(self):
+        self.checkins = social_controller.Picker().yield_user_checkins()
+        self.get_them = tornado.ioloop.PeriodicCallback(self.delayed_yield, 10000)
+
     def open(self):
         self.write_message("Nice to meet you!")
-        # checkins = social_controller.Picker()
+        self.get_them.start()
 
+    def delayed_yield(self):
+        checkin = self.checkins.next()
+        self.write_message(str(checkin))
 
     def on_close(self):
-        print "She's gone."
+        self.get_them.stop()
+        print("She's gone.")
 
 
 application = tornado.web.Application([
@@ -31,4 +40,5 @@ application = tornado.web.Application([
 
 if __name__ == '__main__':
     application.listen(9999)
-    tornado.ioloop.IOLoop.instance().start()
+    ioloop = tornado.ioloop.IOLoop.instance()
+    ioloop.start()
