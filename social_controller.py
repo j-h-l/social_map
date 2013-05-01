@@ -31,6 +31,7 @@ class Picker(object):
                 pass
         if user_id:
             try:
+                print("In user_id if test.")
                 user = self.session.query(GowallaUser).join(GowallaCheckin)\
                         .filter(GowallaUser.id == user_id).first()
             except:
@@ -38,4 +39,9 @@ class Picker(object):
                 raise
 
         for eachcheckin in user.checkins:
-            yield (eachcheckin.lat, eachcheckin.lng, eachcheckin.checkin_time)
+            jfile = {"lat": float(eachcheckin.lat),
+                     "lng": float(eachcheckin.lng),
+                     "time": eachcheckin.checkin_time.strftime("%Y-%m-%d %H:%M:%S")}
+
+            print(jfile)
+            yield jfile

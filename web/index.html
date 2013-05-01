@@ -4,16 +4,20 @@
     <title>Websocket test</title>
     <meta charset="utf-8" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="/src/javascripts/ws.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGp1d-BjuiKUxDDdCMjR_uKhT36Rn6q9E&sensor=false"></script>
+    <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+    <script src="src/javascripts/ws.js"></script>
+    <!-- <script src="src/javascripts/gmaps.js"></script> -->
     <!-- <script src="/src/stylesheets/app.css"></script> -->
 </head>
 <body>
-<button id="disconnect">Disconnect</button>
+<button id="disconnect">Disconnect Websocket</button>
 
 <div id="container">
   <div id="session_status"></div>
   <h1>Websocket stream</h1>
   <div id="stream"></div>
 </div>
+<div id="map-canvas" style="width: 500px; height: 400px"></div>
 </body>
 </html>

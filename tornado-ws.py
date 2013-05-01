@@ -4,6 +4,7 @@ import tornado.web
 import tornado.websocket
 import tornado.template
 import social_controller
+import json
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -17,15 +18,18 @@ class WeSoHandler(tornado.websocket.WebSocketHandler):
     """ Handler for websocket connection """
     def initialize(self):
         self.checkins = social_controller.Picker().yield_user_checkins()
-        self.get_them = tornado.ioloop.PeriodicCallback(self.delayed_yield, 10000)
 
     def open(self):
-        self.write_message("Nice to meet you!")
+        # self.write_message("Nice to meet you!")
+        self.get_them = tornado.ioloop.PeriodicCallback(self.delayed_yield, 5000)
         self.get_them.start()
+        # self.write_message(str(self.checkins.next()))
 
     def delayed_yield(self):
         checkin = self.checkins.next()
-        self.write_message(str(checkin))
+        # print(type(checkin))
+        if checkin:
+            self.write_message(checkin)
 
     def on_close(self):
         self.get_them.stop()
