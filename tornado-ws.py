@@ -19,14 +19,16 @@ class WeSoHandler(tornado.websocket.WebSocketHandler):
         self.checkins = social_controller.Picker().yield_user_checkins()
 
     def open(self):
-        # self.write_message("Nice to meet you!")
         self.get_them = tornado.ioloop.PeriodicCallback(self.delayed_yield, 5000)
         self.get_them.start()
-        # self.write_message(str(self.checkins.next()))
 
     def delayed_yield(self):
-        checkin = self.checkins.next()
-        # print(type(checkin))
+        try:
+            checkin = self.checkins.next()
+        except StopIteration:
+            print("End of checkins, retrieving another user")
+            self.initialize()
+            checkin = self.checkins.next()
         if checkin:
             self.write_message(checkin)
 
