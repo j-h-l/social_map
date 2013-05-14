@@ -4,7 +4,6 @@ import tornado.web
 import tornado.websocket
 import tornado.template
 import social_controller
-import json
 
 
 class MainHandler(tornado.web.RequestHandler):

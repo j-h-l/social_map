@@ -20,23 +20,28 @@ class Picker(object):
         self.session = Session()
         self.totalUsers = self.session.query(GowallaUser)[-1].id
 
-    def yield_user_checkins(self, random=True, user_id=None):
-        while random:
-            try:
-                user = self.session.query(GowallaUser).join(GowallaCheckin)\
-                      .filter(GowallaUser.id == randint(0, self.totalUsers)).first()
-                break
-            except:
-                print("No user found by random id. Trying again.")
-                pass
+    def randomUser(self):
+        properUser = False
+        while not properUser:
+            user = self.session.query(GowallaUser).join(GowallaCheckin)\
+                    .filter(GowallaUser.id == randint(0, self.totalUsers)).first()
+            properUser = type(user) == GowallaUser
+        return user
+
+    def pickUser(self, user_id):
+        user = self.session.query(GowallaUser).join(GowallaCheckin)\
+               .filter(GowallaUser.id == user_id).first()
+        if type(user) == GowallaUser:
+            return user
+        else:
+            print("Could not find user_id(%s). Returning random user." % user_id)
+            return self.randomUser()
+
+    def yield_user_checkins(self, user_id=None):
         if user_id:
-            try:
-                print("In user_id if test.")
-                user = self.session.query(GowallaUser).join(GowallaCheckin)\
-                        .filter(GowallaUser.id == user_id).first()
-            except:
-                print("User not found. Please check the user id and try again.")
-                raise
+            user = self.pickUser(user_id)
+        else:
+            user = self.randomUser()
 
         for eachcheckin in user.checkins:
             jfile = {"lat": float(eachcheckin.lat),
