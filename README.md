@@ -6,6 +6,7 @@ Python
 * sqlalchemy - storing user checkins, frienship data into Postgresql
 * alembic - versioned database migrations
 * tornado - webserver, used to establish websocket connection
+
 Javascript
 * jQuery - DOM manipulation
 * Google Maps Javascript API v3
