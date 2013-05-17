@@ -6,6 +6,7 @@ data/
 # generated png
 *.png
 
+web/.sass-cache
 
 # OS specific
 .DS_Store
