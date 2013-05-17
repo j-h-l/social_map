@@ -5,6 +5,7 @@ data/
 
 # generated png
 *.png
+!web/src/*.png
 
 web/.sass-cache
 

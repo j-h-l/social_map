@@ -1,0 +1,8 @@
+body {
+  background-image: url(../wavegrid.png);
+  background-position: initial initial;
+  background-repeat: initial initial; }
+
+#map-canvas {
+  width: 100%;
+  height: 400px; }
