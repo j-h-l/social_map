@@ -6,9 +6,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=APIKEY&sensor=false"></script> -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script src="src/javascripts/ws.js"></script>
+    <!-- <script src="src/javascripts/ws.js"></script> -->
+    <script src="src/javascripts/websocket-gmap.js"></script>
+    <!-- <script src="src/javascripts/test.js"></script> -->
     <!-- <script src="src/javascripts/gmaps.js"></script> -->
-    <!-- <script src="/src/stylesheets/app.css"></script> -->
+    <link rel="stylesheet" type="text/css" href="src/stylesheets/main.css">
 </head>
 <body>
 <button id="disconnect">Disconnect Websocket</button>
@@ -18,6 +20,6 @@
   <h1>Websocket stream</h1>
   <div id="stream"></div>
 </div>
-<div id="map-canvas" style="width: 500px; height: 400px"></div>
+<div id="map-canvas"></div>
 </body>
 </html>
