@@ -1,4 +1,7 @@
 /*global $, WebSocket, google */ //jslint keywords
+// todo: transition to green/red light for websocket status
+//       calculate coordinate translation between gmap and d3js
+//       process checkin streams on to bins (replace markers)
 
 $(document).ready(function () {
     'use strict';

@@ -8,13 +8,19 @@
     <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=APIKEY&sensor=false"></script> -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <!-- <script src="src/javascripts/ws.js"></script> -->
+    <script src="src/javascripts/d3.v3/d3.v3.js" charset="utf-8"></script>
+    <script src="http://d3js.org/d3.hexbin.v0.min.js?5c6e4f0"></script>
     <script src="src/javascripts/websocket-gmap.js"></script>
     <!-- <script src="src/javascripts/test.js"></script> -->
     <!-- <script src="src/javascripts/gmaps.js"></script> -->
 </head>
 <body>
-  <header></header>
+<header></header>
+
 <button id="disconnect">Disconnect Websocket</button>
+<img src="assets/reddot.png" alt="WS-notconnected" />
+<img src="assets/greendot.png"  />
+<a href="assets/reddot.png"></a>
 
 <div id="container">
   <div id="session_status"></div>
@@ -23,6 +29,7 @@
 </div>
 
 <div id="map-canvas"></div>
+
 <footer></footer>
 </body>
 </html>
