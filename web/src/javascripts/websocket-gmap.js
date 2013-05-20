@@ -5,15 +5,15 @@
 
 $(document).ready(function () {
     'use strict';
-    $('.ws-indicator')
-        .mouseover(function () {
-            var dot = $('.ws-indicator');
-            dot.attr('src', "assets/greendot.png");
-        })
-        .mouseout(function () {
-            var dot = $('.ws-indicator');
-            dot.attr('src', "assets/reddot.png");
-        });
+    // $('.ws-indicator')
+    //     .mouseover(function () {
+    //         var dot = $('.ws-indicator');
+    //         dot.attr('src', "assets/greendot.png");
+    //     })
+    //     .mouseout(function () {
+    //         var dot = $('.ws-indicator');
+    //         dot.attr('src', "assets/reddot.png");
+    //     });
     if (!(window.hasOwnProperty("WebSocket"))) {
         $('#session_status').append("<p>Sorry websocket is not supported in your browser. Try something else.</p>");
     } else {
@@ -34,9 +34,10 @@ $(document).ready(function () {
 
                 try {
                     socket.onopen = function () {
-                        $('#session_status').append("<p>Websocket is now open through: " + host + "</p>");
-                        var dot = $('.ws-indicator').attr('src');
-                        dot.attr('src', "greendot.png");
+                        // $('#session_status').append("<p>Websocket is now open through: " + host + "</p>");
+                        $('.ws-indicator').attr('src', "assets/greendot.png");
+                        // var dot = $('.ws-indicator').attr('src');
+                        // dot.attr('src', "greendot.png");
 
                     };
 
@@ -53,7 +54,8 @@ $(document).ready(function () {
                     };
 
                     socket.onclose = function () {
-                        $('#session_status').append("<p>Websocket is now closed. Thank you come again.</p>");
+                        // $('#session_status').append("<p>Websocket is now closed. Thank you come again.</p>");
+                        $('.ws-indicator').attr('src', "assets/reddot.png");
                     };
 
                     $('#disconnect').click(function () {

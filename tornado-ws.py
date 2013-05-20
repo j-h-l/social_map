@@ -41,6 +41,7 @@ application = tornado.web.Application([
     (r"/websocket", WeSoHandler),
     (r"/", MainHandler),
     (r"/src/(.*)", tornado.web.StaticFileHandler, {"path": "./web/src"}),
+    (r"/assets/(.*)", tornado.web.StaticFileHandler, {"path": "./web/assets"}),
                                        ])
 
 if __name__ == '__main__':
