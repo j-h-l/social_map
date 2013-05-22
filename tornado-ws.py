@@ -19,7 +19,7 @@ class WeSoHandler(tornado.websocket.WebSocketHandler):
         self.checkins = social_controller.Picker().yield_user_checkins()
 
     def open(self):
-        self.get_them = tornado.ioloop.PeriodicCallback(self.delayed_yield, 5000)
+        self.get_them = tornado.ioloop.PeriodicCallback(self.delayed_yield, 500)
         self.get_them.start()
 
     def delayed_yield(self):
