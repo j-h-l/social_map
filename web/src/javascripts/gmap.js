@@ -1,7 +1,7 @@
 /*global $, google, d3 */
 /*jslint nomen: true */
 var GMAP = {
-    map: {},
+    map: null,
     d3overlay: null,
     initialOptions: {
         zoom: 12,
@@ -15,5 +15,16 @@ $(function () {
     var g_initialize = function () {
         GMAP.map = new google.maps.Map($('#map-canvas')[0], GMAP.initialOptions);
     };
+
     google.maps.event.addDomListener(window, 'load', g_initialize);
+
+    var sampler = function () {
+        if (GMAP.d3overlay === null) {
+        var overlay = new D3HexbinGmapOverlay(GMAP.map, sampleset);
+        GMAP.d3overlay = overlay;
+    }
+        GMAP.d3overlay.setMap(GMAP.map);
+        console.log("ran sampler()");
+    };
+    sampler();
 });

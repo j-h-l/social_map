@@ -18,6 +18,4 @@ body {
   shape-rendering: crispEdges; }
 
 .hexagon {
-  fill: none;
-  stroke: #000;
-  stroke-width: .5px; }
+  fill: none; }
