@@ -57,7 +57,7 @@ Example of check-in information
 196514  2010-07-24T13:44:58Z    53.360511233    -2.276369017    1275991
 
 ## License ##
-Copyright (c) <2013> <Jeehyung Lee>
+Copyright (c) 2013 Jeehyung Lee
 
 Use it for good license.  I'm providing this source as it.  If you would like to use the ideas and source to better the world, you are free to take and use this however you see fit.
 
