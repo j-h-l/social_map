@@ -92,7 +92,7 @@ D3HexbinGmapOverlay.prototype.draw = function () {
 };
 D3HexbinGmapOverlay.prototype.onRemove = function () {
     'use strict';
-    d3.selectAll('.hexagon').remove();
+    d3.select("[clip-path='url(#clip)']").remove();
 };
 // D3HexbinGmapOverlay.prototype.onRemove = function () {
 //     // remove objects from the dom

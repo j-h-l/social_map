@@ -1,6 +1,8 @@
 # Visualization of social checkins #
 Hex-binnified visualization layer over google maps
 
+![Screenshot](http://i.imgur.com/vzBbnPi.png)
+
 ## Built using ##
 ### Python ###
 
@@ -18,8 +20,6 @@ Hex-binnified visualization layer over google maps
 * Google Maps Javascript API v3
 
 * D3 Hexbin overlay layer
-
-![Screenshot](http://i.imgur.com/vzBbnPi.png)
 
 * websocket connection
 
